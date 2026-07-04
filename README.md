@@ -119,16 +119,10 @@ Our final run on M1/8GB RAM using `repetition_penalty=1.15` and `repetition_cont
 | **ROUGE-L F1** | **0.1421**         | **0.1655**        | **▲ 16.5%** |
 | **ROUGE-1 F1** | **0.3053**         | **0.3038**        | —           |
 
+![ROUGE-L Improvement Comparison](assets/comparison.png)
+
 **Qualitative improvement**: Base model gives general or misaligned responses (e.g. confusing lattice corneal dystrophy with keratoconus). The fine-tuned model yields highly accurate, concise, and professionally structured clinical responses matching the target style.
 
 ## ❓ Why MLX instead of bitsandbytes/QLoRA?
 
 `bitsandbytes` (the standard QLoRA library) **does not support Apple Silicon MPS**. `mlx-lm` is Apple's own ML framework, purpose-built for M1/M2/M3 unified memory architecture — it's the correct and stable choice for LoRA on Mac.
-
-## 📚 References
-
-- [MLX-LM](https://github.com/ml-explore/mlx-examples/tree/main/llms/mlx_lm) — Apple's LLM fine-tuning library
-- [PEFT Library](https://huggingface.co/docs/peft) — HuggingFace parameter-efficient fine-tuning
-- [LoRA Paper](https://arxiv.org/abs/2106.09685) — Hu et al., 2021
-- [MedQuAD Medical QA Dataset](https://huggingface.co/datasets/keivalya/MedQuad-MedicalQnADataset)
-- [Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) — Base model
